@@ -41066,7 +41066,7 @@ m=s!=null
 if(m)B.b.D(n,A.a([B.bY,new A.ry("Temperature",""+B.d.ap(s*9/5+32)+" \xb0F",B.BX,l)],o))
 if(h!=null)B.b.D(n,A.a([B.bY,new A.ry("Humidity",A.j(h)+"%",B.BZ,l)],o))
 if(q!=null)B.b.D(n,A.a([B.bY,new A.NL(q,l)],o))
-if(m)B.b.D(n,A.a([B.ds,A.dy("These readings come from a sensor on the listening station itself. It sits in the sun, so the temperature often reads warmer than the shade.",l,l,A.dz(l,l,B.i.bd(0.6),l,l,l,l,l,l,l,l,13,B.cW,l,l,l,1.3,!0,l,l,l,l,l,l,l,l),l)],o))
+if(m)B.b.D(n,A.a([B.ds,A.dy("These readings come from a sensor on the listening station itself. On sunny days, the station's temperature may read warmer than the air around it.",l,l,A.dz(l,l,B.i.bd(0.6),l,l,l,l,l,l,l,l,13,B.cW,l,l,l,1.3,!0,l,l,l,l,l,l,l,l),l)],o))
 return A.nQ(i,A.qu(A.cU(l,A.kg(n,B.av,B.a_,B.aN),l,p,l,l,B.bG,300),r))}}
 A.NL.prototype={
 S(a){var s=null,r=this.c,q=t.p
