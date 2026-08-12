@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/birdweather-exhibit-pages/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="A new Flutter project.">
+
+  <!--
+    Cap devicePixelRatio so Flutter's CanvasKit surface stays within the GPU's
+    MAX_TEXTURE_SIZE. Some devices (e.g. Fire TV sticks) report devicePixelRatio
+    as high as 4, which makes a 1920x1080 view request a 7680x4320 GL surface.
+    On a GPU with a 4096px max texture, only the left portion renders and the
+    rest is blank. Capping the ratio keeps the surface under that limit.
+    Must run before flutter.js initializes the engine.
+  -->
+  <script>
+    (function () {
+      try {
+        var MAX_TEXTURE = 4096;   // typical low-end GPU limit
+        var MARGIN = 0.95;        // stay safely under it
+        var real = window.devicePixelRatio || 1;
+        var longestSide = Math.max(
+          window.innerWidth || screen.width || 1920,
+          window.innerHeight || screen.height || 1080
+        );
+        var maxRatio = (MAX_TEXTURE * MARGIN) / longestSide;
+        var capped = Math.min(real, maxRatio);
+        if (capped > 0 && capped < real) {
+          Object.defineProperty(window, "devicePixelRatio", {
+            configurable: true,
+            get: function () { return capped; }
+          });
+        }
+      } catch (e) { /* leave devicePixelRatio untouched on any failure */ }
+    })();
+  </script>
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="birdweather_exhibit">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>birdweather_exhibit</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "3926159920";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
